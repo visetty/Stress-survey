@@ -27,6 +27,6 @@ $(document).ready(function) {
         } else {
           $("#stressRelief").append("Go to a Doctor");
         }
-        result();
+        return result();
 
 });
