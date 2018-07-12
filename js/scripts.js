@@ -1,7 +1,7 @@
-var surveySuggestions = function(stress-symptoms, health-symptoms) {
-  return stressValue + healthIssuesValue;
+var surveySuggestions = function(stress-symptoms, health-symptoms, coping-methods1) {
+  return stressValue + healthIssuesValue + copingValue;
 }
-var result = stressValue + healthIssuesValue;
+var result = stressValue + healthIssuesValue + copingValue;
 
 
 
@@ -11,20 +11,22 @@ var result = stressValue + healthIssuesValue;
 $(document).ready(function) {
   $("form#stress-survey").submit(function(event) {
    event.preventDefault();
-   $("#coping-methods").show();
+   $("#stressRelief").show();
     $("input:checkbox[name=stress-signs]:checked").each(function(){
-      var stressValue = $(this).val();
+      var stressValue = parseInt($(this).val());
     $("input:checkbox[name=health-issues]:checked").each(function(){
-      var healthIssuesValue = $(this).val();
-        if (surveySuggestions <= 3) {
-          $("#coping-methods").append("Take rest");
-        } else if (surveySuggestions > 3) && (surveySuggestions <= 10) {
-          $("#coping-methods").append("do yoga");
-        } else if (surveySuggestions > 10) && (surveySuggestions <= 15) {
-          $("#coping-methods").append("Take a break");
+      var healthIssuesValue = parseInt($(this).val());
+    $("input:checkbox[name=coping-methods]:checked").each(function(){
+      var copingValue = parseInt($(this).val());
+        if (result <= 3) {
+          $("#stressRelief").append("Take rest");
+        } else if (result > 3) && (result <= 10) {
+          $("#stressRelief").append("do yoga");
+        } else if (result > 10) && (result <= 15) {
+          $("#stressRelief").append("Take a break");
         } else {
-          $("#coping-methods").append("Go to a Doctor");
+          $("#stressRelief").append("Go to a Doctor");
         }
+        result();
 
-
-}
+});
